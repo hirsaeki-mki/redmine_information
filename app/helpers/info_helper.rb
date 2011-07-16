@@ -20,6 +20,11 @@ module InfoHelper
     return true
   end
 
+  def workflow_flowable?(wf, old_status, new_status)
+    return false	unless wf
+    wf.detect {|w| w.old_status_id == old_status.id && w.new_status_id == new_status.id}
+  end
+  
   def workflow_has_author_assignee
     (1 < Redmine::VERSION::MAJOR ||
         (1 == Redmine::VERSION::MAJOR && 2 <= Redmine::VERSION::MINOR))

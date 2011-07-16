@@ -4,11 +4,13 @@ Redmine::Plugin.register :redmine_information do
   name 'Redmine Information Plugin'
   author 'M. Yoshida'
   description 'This is a plugin for information of Redmine'
-  version '0.1.0'
+  version '0.2.0'
   url 'http://www.r-labs.org/projects/rp-admin-reports/wiki/Redmine_Information_Plugin'
   author_url 'http://www.r-labs.org/users/296'
-  
-  settings(:default => InfoCategory.hide_map(),
+
+  setmap = InfoCategory.hide_map();
+  setmap['use_dot'] = false
+  settings(:default => setmap,
            :partial => 'settings/info_settings')
   menu(:top_menu, :redmine_info,
        { :controller => 'info', :action => 'show', :id => :version },

@@ -53,15 +53,18 @@
 
 
 
-<% if @tracker && @role && @statuses.any? %>
+<% if @tracker && @role && @statuses.any?
+   target_title = "#{@role.name} - #{@tracker}"
+%>
 
-<h3> <%=h @role.name %> - <%=h @tracker %> </h3>
+<h3> <%=h target_title %> </h3>
 
 
 <%   if @workflows %>
 
 <%=    render(:partial => 'info/flows_table',
-              :locals => {:workflows => @workflows['always'], :sub_workflows => false}) %>
+              :locals => {:target_title => target_title, :workflows => @workflows['always'],
+			  :sub_workflows => false}) %>
 
 <%     for name in ['author', 'assignee'] %>
 
@@ -71,7 +74,8 @@
 <p> <%= l(:label_no_data) %> </p>
 <%        else %>
 <%= render(:partial => 'info/flows_table',
-           :locals => {:workflows => @workflows[name], :sub_workflows => @workflows['always']}) %>
+           :locals => {:target_title => target_title, :workflows => @workflows[name],
+		       :sub_workflows => @workflows['always']}) %>
 <%       end %>
 <%     end %>
 

@@ -43,7 +43,7 @@ class InfoCategory
   
   def self.is_shown?(catsym)
     hidekey = 'hide_' + catsym.to_s
-    return !Setting.plugin_redmine_information[hidekey];
+    return !Setting.plugin_redmine_information[hidekey]
   end
 
   

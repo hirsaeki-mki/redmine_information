@@ -5,7 +5,8 @@ class InfoController < ApplicationController
 
   helper :info
   include InfoHelper
-
+  helper :graphviz
+  include GraphvizHelper
 
   def permissions
     @roles = Role.find(:all, :order => 'builtin, position')
@@ -28,14 +29,16 @@ class InfoController < ApplicationController
     end
     @statuses ||= IssueStatus.find(:all, :order => 'position')
 
-    if (workflow_has_author_assignee && @tracker && @role && @statuses.any?)
-      workflows = Workflow.all(:conditions => {:role_id => @role.id, :tracker_id => @tracker.id})
-      @workflows = {}
-      @workflows['always'] = workflows.select {|w| !w.author && !w.assignee}
-      @workflows['author'] = workflows.select {|w| w.author}
-      @workflows['assignee'] = workflows.select {|w| w.assignee}
+    if (@tracker && @role && @statuses.any?)
+      if (workflow_has_author_assignee)
+        workflows = Workflow.all(:conditions => {:role_id => @role.id, :tracker_id => @tracker.id})
+        @workflows = {}
+        @workflows['always'] = workflows.select {|w| !w.author && !w.assignee}
+        @workflows['author'] = workflows.select {|w| w.author}
+        @workflows['assignee'] = workflows.select {|w| w.assignee}
+      end
     end
-
+      
   end
 
 

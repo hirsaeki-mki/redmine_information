@@ -31,3 +31,7 @@
   <% end %>
 </tbody>
 </table>
+
+<% if Setting.plugin_redmine_information['use_dot'] %>
+  <%= create_workflow_chart(target_title, @statuses, workflows, sub_workflows) %>
+<% end %>
