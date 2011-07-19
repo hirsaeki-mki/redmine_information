@@ -12,5 +12,6 @@ ja:
   label_all_ng: すべて不可
 
   text_no_public: このカテゴリの情報は公開されていません。
-
   text_err_dot: dot コマンドの実行に失敗しました。
+  text_no_rails_info: 現在のバージョンの Rails では Rails 情報を表示できません。
+

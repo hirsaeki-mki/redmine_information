@@ -1,2 +1,6 @@
 
-<%= Rails::Info.to_html %>
+<% begin %>
+    <%= Rails::Info.to_html %>
+<% rescue %>
+    <div class='warning'> <%=h l(:text_no_rails_info) %> </div>
+<% end %>

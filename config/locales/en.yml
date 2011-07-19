@@ -12,7 +12,6 @@ en:
   label_all_ng: ALL NG
 
   text_no_public: "Information on this category isn't made public."
-
   text_err_dot: Failed to execute dot command.
-
+  text_no_rails_info: "Can't show Rails infomation in this Rails version."
   
