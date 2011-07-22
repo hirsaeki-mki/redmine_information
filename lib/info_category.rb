@@ -13,7 +13,7 @@ class InfoCategory
   def self.hide_map
     map = {}
     InfoCategory.categories.each {|catsym|
-      map['hide_' + catsym.to_s] = (catsym == "rails_info") ? true : false
+      map['hide_' + catsym.to_s] = (catsym.to_s == "rails_info") ? true : false
     }
     map
   end

@@ -1,3 +1,5 @@
+[[Redmine インフォメーション プラグイン|日本語]]
+
 
 h1. Redmine information plugin
 
@@ -20,7 +22,7 @@ Information Contents
 * Keywords in commit messages for repository
 * Installed plugins
 * A List of wiki macros
-* Rails information
+* Rails information (default invisible)
 * Current Redmine version
 
 These information to display is selectable.
@@ -42,14 +44,17 @@ cf. http://www.redmine.org/wiki/1/Plugins
 
 h3. Show Work flow charts
 
-# Install Graphviz:http://www.graphviz.org/ , and set PATH.
+# Install "Graphviz":http://www.graphviz.org/ , and set PATH.
 # Check *"Use graphviz(dot)"* in this plugin setting page.
 
-But *"can't show charts in IE9"* which don't support SVG.
+But *"can't show charts in IE8"* which don't support SVG.
+And Redmine version needs 1.2.0 or later.
+
 
 h2. Usage
 
 View information form *Information* menu item in the top menu.
 
 !workflow_en.png!
-!screenshot_en.png!
+
+!permissions_en.png!

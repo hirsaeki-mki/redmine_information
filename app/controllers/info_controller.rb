@@ -1,3 +1,5 @@
+require 'rails/info'
+
 class InfoController < ApplicationController
   unloadable
   

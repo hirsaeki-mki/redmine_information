@@ -1,3 +1,4 @@
+$LOAD_PATH << "#{RAILTIES_PATH}/builtin/rails_info"
 require 'redmine'
 
 Redmine::Plugin.register :redmine_information do
