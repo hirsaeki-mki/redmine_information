@@ -56,7 +56,6 @@ module GraphvizHelper
     str = ""
     uses = []
     for stspos in 0..(statuses.size-1)
-      break	if (stspos+1 == statuses.size-1)
       for nstspos in (stspos+1)..(statuses.size-1)
         if (workflow_flowable?(subwf, statuses[stspos], statuses[nstspos]) or
               workflow_flowable?(wf, statuses[stspos], statuses[nstspos]))
@@ -71,28 +70,11 @@ module GraphvizHelper
     [str, uses.uniq]
   end
 
-#   digraph sample {
-# node [shape = box, fontname="ＭＳ ゴシック"];
-# 新規 [style = filled, fillcolor = "yellow"];
-# 終了 [style = filled, fillcolor = "gray"];
-# 新規 -> 進行中;
-# 新規 -> フィードバック;
-# 新規 -> 解決;
-# 新規 -> 終了;
-# 進行中 -> フィードバック [dir = both];
-# 進行中 -> 解決 [dir = both];
-# 進行中 -> 終了;
-# フィードバック -> 解決 [dir = both];
-# フィードバック -> 終了;
-# 解決 -> 終了;
-# }
+
   def create_dot_digraph_workflow(graphname, statuses, wf, subwf)
     dot_digraph(quote graphname) {
       str = "ranksep = 0.3;"
       opt = {'shape' => 'box', 'margin' => '0.05'}
-#       unless (Setting.plugin_redmine_information['dot_fontname'].blank?)
-#         opt['fontname'] = Setting.plugin_redmine_information['dot_fontname']
-#       end
       str += dot_line('node', opt)
       struses = create_dot_workflow(statuses, wf, subwf)
       str += create_dot_statuses(statuses, struses.last)
