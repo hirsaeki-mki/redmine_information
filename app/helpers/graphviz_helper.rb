@@ -57,11 +57,14 @@ module GraphvizHelper
     uses = []
     for stspos in 0..(statuses.size-1)
       for nstspos in (stspos+1)..(statuses.size-1)
-        if (workflow_flowable?(subwf, statuses[stspos], statuses[nstspos]) or
-              workflow_flowable?(wf, statuses[stspos], statuses[nstspos]))
-          str += dot_line_connect(statuses[stspos].position, statuses[nstspos].position,
-                                  (workflow_flowable?(subwf, statuses[nstspos], statuses[stspos]) or
-                                     workflow_flowable?(wf, statuses[nstspos], statuses[stspos])))
+        fore = workflow_flowable?(statuses[stspos], statuses[nstspos], wf, subwf)
+        back = workflow_flowable?(statuses[nstspos], statuses[stspos], wf, subwf)
+        if (fore)
+          str += dot_line_connect(statuses[stspos].position, statuses[nstspos].position, back)
+        elsif (back)
+          str += dot_line_connect(statuses[nstspos].position, statuses[stspos].position)
+        end
+        if (fore or back)
           uses << statuses[stspos].position
           uses << statuses[nstspos].position
         end

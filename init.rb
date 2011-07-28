@@ -5,7 +5,7 @@ Redmine::Plugin.register :redmine_information do
   name 'Redmine Information Plugin'
   author 'M. Yoshida'
   description 'This is a plugin for information of Redmine'
-  version '0.2.2'
+  version '0.2.3'
   url 'http://www.r-labs.org/projects/rp-admin-reports/wiki/Redmine_Information_Plugin'
   author_url 'http://www.r-labs.org/users/296'
 
