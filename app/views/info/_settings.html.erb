@@ -1,5 +1,25 @@
 
-<h3><%=l(:label_repository)%></h3>
+<h3><%=h l(:field_mail_notification)%></h3>
+
+<div class='wiki'>
+<table>
+<tr><th> <%=h l(:label_notification)%> </th><th><%=h l(:label_action)%> </th></tr>
+<% @notifiables.each do |notifiable| %>
+<tr><td align="center">
+<% if Setting.notified_events.include?(notifiable.name) %>
+<span class="icon icon-checked"></span>
+<% end %>
+</td><td>
+<% if notifiable.parent.present? %>
+&nbsp; &nbsp; 
+<% end %>
+<%=h t("label_" + notifiable.name) %>
+</td></tr>
+<% end %>
+</table>
+</div>
+
+<h3><%=h l(:label_repository)%></h3>
 
 <table>
 <tr>
@@ -8,7 +28,7 @@
 </tr>
 </table>
 
-<h4><%= l(:text_issues_ref_in_commit_messages) %></h4>
+<h4><%=h l(:text_issues_ref_in_commit_messages) %></h4>
 
 <table>
 <tr>

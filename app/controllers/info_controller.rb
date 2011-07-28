@@ -45,15 +45,19 @@ class InfoController < ApplicationController
 
 
   def settings
+    # Mail Notification
+    @notifiables = Redmine::Notifiable.all
+
+    # Repository
     @commit_fix_status = IssueStatus.find_by_id(Setting[:commit_fix_status_id])
     unless (@commit_fix_status)
       @commit_fix_status = l(:label_no_change_option)
     end
-    
     @commit_fix_done_ratio = Setting[:commit_fix_done_ratio]
     if (!@commit_fix_done_ratio or @commit_fix_done_ratio.empty?)
       @commit_fix_done_ratio = l(:label_no_change_option)
     end
+    
   end
   
 

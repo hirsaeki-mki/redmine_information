@@ -15,3 +15,6 @@ ja:
   text_err_dot: dot コマンドの実行に失敗しました。
   text_no_rails_info: 現在のバージョンの Rails では Rails 情報を表示できません。
 
+  label_notification: 通知
+  label_action: アクション
+
