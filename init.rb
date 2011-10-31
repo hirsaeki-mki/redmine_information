@@ -5,9 +5,9 @@ Redmine::Plugin.register :redmine_information do
   name 'Redmine Information Plugin'
   author 'M. Yoshida'
   description 'This is a plugin for information of Redmine'
-  version '0.2.3'
+  version '0.2.4'
   url 'http://www.r-labs.org/projects/rp-admin-reports/wiki/Redmine_Information_Plugin'
-  author_url 'http://www.r-labs.org/users/296'
+  author_url 'http://yohshiy.blog.fc2.com/'
 
   setmap = InfoCategory.hide_map();
   setmap['use_dot'] = false
