@@ -36,7 +36,7 @@ module GraphvizHelper
     opt = {}
     str = ""
     statuses.each {|sts|
-      next 	unless uses.include?(sts.id)
+      next 	unless uses.include?(sts.position)
       opt.clear
       if (sts.is_default?)
         opt['style'] = 'filled'
@@ -126,16 +126,16 @@ module GraphvizHelper
       errstr = l(:text_err_dot) + "\n" + errstr
       errstr << reststr
     end
-    [dest, errstr]
+    {:svg=>dest, :err=>errstr}
   end
   
   def create_workflow_chart(graphname, statuses, wf, subwf)
     results = exec_dot(create_dot_digraph_workflow(graphname, statuses, wf, subwf))
-    str = results.first
-    unless (results.last.blank?)
-      str += "<div class='nodata'> #{simple_format(results.last)}</div>"
+    output = results[:svg]
+    unless (results[:err].blank?)
+      output += "<div class='nodata'> #{simple_format(results[:err])}</div>"
     end
-    str
+    output
   end
   
 end
