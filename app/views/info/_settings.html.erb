@@ -1,6 +1,7 @@
 
 <h3><%=h l(:field_mail_notification)%></h3>
 
+<% if @deliveries %>
 <div class='wiki'>
 <table>
 <tr><th> <%=h l(:label_notification)%> </th><th><%=h l(:label_action)%> </th></tr>
@@ -18,6 +19,11 @@
 <% end %>
 </table>
 </div>
+<% else %>
+<div class="nodata">
+<%= simple_format(l(:text_email_delivery_not_configured)) %>
+</div>
+<% end %>
 
 <h3><%=h l(:label_repository)%></h3>
 

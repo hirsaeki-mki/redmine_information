@@ -47,6 +47,7 @@ class InfoController < ApplicationController
   def settings
     # Mail Notification
     @notifiables = Redmine::Notifiable.all
+    @deliveries = ActionMailer::Base.perform_deliveries
 
     # Repository
     @commit_fix_status = IssueStatus.find_by_id(Setting[:commit_fix_status_id])
