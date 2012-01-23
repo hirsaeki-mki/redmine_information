@@ -46,7 +46,13 @@ class InfoController < ApplicationController
 
   def settings
     # Mail Notification
-    @notifiables = Redmine::Notifiable.all
+    @notifiables = []
+    Redmine::Notifiable.all.each {|notifiable|
+      if notifiable.parent.present?
+        next	if (Setting.notified_events.include?(notifiable.parent))
+      end
+      @notifiables << notifiable
+    }
     @deliveries = ActionMailer::Base.perform_deliveries
 
     # Repository
