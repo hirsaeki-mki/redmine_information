@@ -8,6 +8,15 @@ module InfoHelper
     return (User.current.admin? and !InfoCategory::is_shown?(catsym));
   end
 
+  def show_bool(boolval, falsestr = nil)
+    if (boolval)
+      "<span class='icon icon-checked'></span>"
+    else
+      falsestr ? h(falsestr) : '&nbsp;'
+    end
+  end
+
+  
   def workflows_empty?(statuses, workflows)
     for old_status in @statuses
       for new_status in @statuses

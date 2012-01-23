@@ -58,7 +58,20 @@ class InfoController < ApplicationController
     if (!@commit_fix_done_ratio or @commit_fix_done_ratio.empty?)
       @commit_fix_done_ratio = l(:label_no_change_option)
     end
-    
+
+    @commit_logtime_enabled = Setting[:commit_logtime_enabled]
+    if (@commit_logtime_enabled)
+      @commit_logtime_enabled = (0 < @commit_logtime_enabled.to_i)
+    end
+    @commit_logtime_activity_name = l(:label_default)
+    if (@commit_logtime_enabled)
+      aid = Setting[:commit_logtime_activity_id]
+      if (aid and 0 < aid.to_i)
+        activity = TimeEntryActivity.find_by_id(aid)
+        @commit_logtime_activity_name = activity.name	if (activity)
+      end
+    end
+
   end
   
 

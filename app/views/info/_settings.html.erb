@@ -7,9 +7,7 @@
 <tr><th> <%=h l(:label_notification)%> </th><th><%=h l(:label_action)%> </th></tr>
 <% @notifiables.each do |notifiable| %>
 <tr><td align="center">
-<% if Setting.notified_events.include?(notifiable.name) %>
-<span class="icon icon-checked"></span>
-<% end %>
+<%= show_bool(Setting.notified_events.include?(notifiable.name)) %>
 </td><td>
 <% if notifiable.parent.present? %>
 &nbsp; &nbsp; 
@@ -42,6 +40,7 @@
 <td><%=h Setting[:commit_ref_keywords] %></td>
 </tr>
 <tr>
+
 <th><%=h l(:setting_commit_fix_keywords) %>:</th>
 <td><%=h Setting[:commit_fix_keywords] %></td>
 </tr>
@@ -52,4 +51,15 @@
 <%=h l(:field_done_ratio) %>: <%=h @commit_fix_done_ratio %>
 </td>
 </tr>
+
+<tr>
+<th> <%=h l(:setting_commit_logtime_enabled) %> </th>
+<td> <%= show_bool(@commit_logtime_enabled, "--") %> </td>
+</tr>
+<% if (@commit_logtime_enabled) %>
+<tr>
+<td></td>
+<td> <%=h l(:setting_commit_logtime_activity_id) %> : <%=h @commit_logtime_activity_name %> </td>
+</tr>
+<% end %>
 </table>
