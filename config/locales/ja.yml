@@ -5,6 +5,8 @@ ja:
   label_hide_info_categories: 非表示にするカテゴリの選択
   label_workflow_chart: ワークフロー チャート
   label_use_dot: Graphviz(dot) を使用する
+  label_dot_cmdpath: dot コマンドのパス
+  descript_dot_cmdpath: 省略時は "dot"
 
   label_wiki_macros: Wiki マクロ
   label_rails_info: Rails 情報

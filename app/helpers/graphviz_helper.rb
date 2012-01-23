@@ -1,4 +1,4 @@
-require 'open3'
+require 'kconv'
 
 module GraphvizHelper
 
@@ -94,8 +94,10 @@ module GraphvizHelper
     endptn = /^<\/svg>/
     errptn = /^Error/i
     warningptn = /^\(dot(\.exe)?:\d+\)/i
+    dotcmd = Setting.plugin_redmine_information[:dot_cmdpath]
+    dotcmd = 'dot'	if (!dotcmd.kind_of?(String) or dotcmd.empty?)
     begin
-      IO.popen("dot -Tsvg 2>&1", 'r+') {|io|
+      IO.popen("\"#{dotcmd}\" -Tsvg 2>&1", 'r+') {|io|
         io.puts src
         io.close_write
         while (str = io.gets)
@@ -120,11 +122,11 @@ module GraphvizHelper
       }
     rescue => evar
       errstr << l(:text_err_dot) + "\n"
-      errstr << evar.to_s
+      errstr << Kconv.toutf8(evar.to_s)
     end
     if (dest.empty? or !$?.exited? or $?.exitstatus != 0)
-      errstr = l(:text_err_dot) + "\n" + errstr
-      errstr << reststr
+      errstr = l(:text_err_dot) + "\n" + Kconv.toutf8(errstr)
+      errstr << Kconv.toutf8(reststr)
     end
     {:svg=>dest, :err=>errstr}
   end
