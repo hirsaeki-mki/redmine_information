@@ -1,10 +1,12 @@
-zh:
+﻿zh:
   label_redmine_info: 系统信息
 
   label_info_categories: 系统信息分类
   label_hide_info_categories: 设置用户不可见信息
   label_workflow_chart: 工作流程图
   label_use_dot: 使用Graphviz(DOT)展示
+  label_dot_cmdpath: DOT 文件路径
+  descript_dot_cmdpath: 若为空，则DOT已被使用
 
   label_wiki_macros: Wiki 宏信息
   label_rails_info: Rails 版本信息
