@@ -6,8 +6,8 @@ ko:
   label_hide_info_categories: "숨길 정보 범주 선택"
   label_workflow_chart: "업무흐름 차트"
   label_use_dot: "Graphviz(dot) 사용(http://www.graphviz.org 설치 해야함)"
-  label_dot_cmdpath: The file path of "dot"
-  descript_dot_cmdpath: If this is blank, "dot" is used.
+  label_dot_cmdpath: "\"dot\"의 파일 경로"
+  descript_dot_cmdpath: "빈칸이면 \"dot\" 이 사용됨."
 
   label_wiki_macros: "위키 매크로"
   label_rails_info: "Rails 정보"
