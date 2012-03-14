@@ -1,0 +1,21 @@
+de:
+  label_redmine_info: Information
+  
+  label_info_categories: Informationskategorien
+  label_hide_info_categories: Auswahl Kategorien fur Systeminformatiomnen
+  label_workflow_chart: Workflow Ubersicht
+  label_use_dot: Graphviz(dot) wird verwendet
+  label_dot_cmdpath: Der Installationpfad fur Graphviz "dot" 
+  descript_dot_cmdpath: Falls hier nicht zu sehen ist, wird Graphviz "dot" verwendet.
+
+  label_wiki_macros: Wiki Makros
+  label_rails_info: Rails Information
+
+  label_all_ng: Alle NG
+
+  text_no_public: "Informationen dieser Kategorie sind nicht offentlich." 
+  text_err_dot: Fehler beim Aufruf der dot Executable.
+  text_no_rails_info: "Anzeige von Rails Infomationen fur diese Distribution nicht moglich."
+
+  label_notification: Benachrichtigung
+  label_action: Aktion
