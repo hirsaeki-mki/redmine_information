@@ -15,9 +15,9 @@
     <% @workflow_counts.first.last.each do |role, count|
       next    if @workflow_all_ng_roles.include?(role)
       hclass = (role == @role) ? {:class=>"selected"} : {} %>
-      <% content_tag('th', hclass) do -%>
-        <%= content_tag(role.builtin? ? 'em' : 'span', h(role.name)) %>
-      <% end -%>
+      <%= content_tag('th', hclass) do
+            content_tag(role.builtin? ? 'em' : 'span', h(role.name))
+          end %>
     <% end %>
     </tr>
 </thead>
