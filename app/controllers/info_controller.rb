@@ -11,7 +11,7 @@ class InfoController < ApplicationController
   include GraphvizHelper
 
   def permissions
-    @roles = Role.find(:all, :order => 'builtin, position')
+    @roles = Role.sorted.all
     @permissions = Redmine::AccessControl.permissions.select { |p| !p.public? }
   end
 
