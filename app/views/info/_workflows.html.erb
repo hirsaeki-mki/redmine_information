@@ -60,8 +60,6 @@
 <h3> <%=h target_title %> </h3>
 
 
-<%   if @workflows %>
-
 <%=    render(:partial => 'info/flows_table',
               :locals => {:target_title => target_title, :workflows => @workflows['always'],
 			  :sub_workflows => false}) %>
@@ -78,10 +76,6 @@
 		       :sub_workflows => @workflows['always']}) %>
 <%       end %>
 <%     end %>
-
-<%   else %>
-<%=    render(:partial => 'info/old_flows_table') %>
-<%   end %>
 
 <% end %>
 

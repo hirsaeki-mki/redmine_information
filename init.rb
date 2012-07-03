@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_information do
   settings(:default => setmap,
            :partial => 'settings/info_settings')
   menu(:top_menu, :redmine_info,
-       { :controller => 'info', :action => 'show', :id => :version },
+       { :controller => 'info', :action => 'index'},
        :if => Proc.new { User.current.logged? })
 
 end

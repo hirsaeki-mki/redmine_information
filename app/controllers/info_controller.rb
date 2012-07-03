@@ -32,13 +32,11 @@ class InfoController < ApplicationController
     @statuses ||= IssueStatus.find(:all, :order => 'position')
 
     if (@tracker && @role && @statuses.any?)
-      if (workflow_has_author_assignee)
-        workflows = Workflow.all(:conditions => {:role_id => @role.id, :tracker_id => @tracker.id})
-        @workflows = {}
-        @workflows['always'] = workflows.select {|w| !w.author && !w.assignee}
-        @workflows['author'] = workflows.select {|w| w.author}
-        @workflows['assignee'] = workflows.select {|w| w.assignee}
-      end
+      workflows = Workflow.all(:conditions => {:role_id => @role.id, :tracker_id => @tracker.id})
+      @workflows = {}
+      @workflows['always'] = workflows.select {|w| !w.author && !w.assignee}
+      @workflows['author'] = workflows.select {|w| w.author}
+      @workflows['assignee'] = workflows.select {|w| w.assignee}
     end
       
   end
@@ -98,6 +96,11 @@ class InfoController < ApplicationController
     end
   end
 
+
+  def index
+  end
+
+  
   private
   def find_all_ng_roles(workflow_counts)
     roles_map = {}

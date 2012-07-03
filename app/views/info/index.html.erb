@@ -1,0 +1,14 @@
+
+<% content_for :header_tags do %>
+<%= stylesheet_link_tag 'redmine_info.css', :plugin => 'redmine_information' %>
+<% end %>
+
+<h2> <%=l(:label_redmine_info)%></h2>
+
+<div id="admin-menu">
+  <ul>
+    <%= render_menu :redmine_info_menu %>
+  </ul>
+</div>
+
+<% html_title(l(:label_redmine_info)) %>
