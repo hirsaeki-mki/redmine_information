@@ -10,9 +10,9 @@ module InfoHelper
 
   def show_bool(boolval, falsestr = nil)
     if (boolval)
-      "<span class='icon icon-checked'></span>"
+      raw "<span class='icon icon-checked'></span>"
     else
-      falsestr ? h(falsestr) : '&nbsp;'
+      raw(falsestr ? h(falsestr) : '&nbsp;')
     end
   end
 
