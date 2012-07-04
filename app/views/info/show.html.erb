@@ -4,7 +4,7 @@
 <% end %>
 
 <h2 <%= is_admin_only?(@icat) ? "class='icon icon-lock'" : "" %></h2>
-<%= h InfoCategory.label(@icat)  %>
+<%= l InfoCategory.caption(@icat)  %>
 </h2>
 
 
@@ -35,7 +35,7 @@
 
 <%
 unless (@icat == :version)
-  html_title(InfoCategory.label(@icat)) 
+  html_title(l InfoCategory.caption(@icat))
 end
 %>
 <% html_title(l(:label_redmine_info)) %>

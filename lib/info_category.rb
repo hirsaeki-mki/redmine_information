@@ -10,6 +10,20 @@ class InfoCategory
     [:permissions, :workflows, :settings, :plugins, :wiki_macros, :rails_info, :version]
   end
 
+  def self.caption(sym)
+    case sym.to_sym
+    when :permissions
+      :label_permissions_report
+    when :workflows
+      :label_workflow
+    when :version
+      :label_information_plural
+    else
+      ('label_' + sym.to_s).to_sym
+    end
+  end
+  
+  
   def self.hide_map
     map = {}
     InfoCategory.categories.each {|catsym|
@@ -18,24 +32,15 @@ class InfoCategory
     map
   end
 
-  def self.label(catname)
-    I18n.t(@@captions[catname.to_sym])
-  end
-
   
-  def self.push_menu(menu, catsym, caption = nil, opts = {})
+  def self.push_menu(menu, catsym, opts = {})
     url = {:controller => :info, :action => :show}
     copts = opts.clone
 
     url[:id] = catsym
     copts[:if] = Proc.new { (InfoCategory::is_shown?(catsym) or User.current.admin?) }
 
-    if (caption)
-      copts[:caption] = caption
-    else
-      caption = ("label_" + catsym.to_s).to_sym
-    end
-    @@captions[catsym] = caption
+    copts[:caption] = self.caption(catsym)
 
     menu.push(catsym, url, copts)
   end
