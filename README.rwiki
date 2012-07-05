@@ -1,4 +1,4 @@
-[[Redmine $B%$%s%U%)%a!<%7%g%s(B $B%W%i%0%$%s(B|$BF|K\8l(B]]
+[[Redmine ƒCƒ“ƒtƒHƒ[ƒVƒ‡ƒ“ ƒvƒ‰ƒOƒCƒ“|“ú–{Œê]]
 
 
 h1. Redmine information plugin
@@ -10,16 +10,15 @@ the Permissions report and the workflow from the general user.
 In the case of the workflow, the flow charts is viewable.
 
 
-(This is renamed from _"Administration report plugin"_ )
-
-
-h2. Feauture
+h2. Feature
 
 Information Contents
 
 * Permissions report
 * Workflow
-* Keywords in commit messages for repository
+* Settings
+** E-mail notifiable action
+** Keywords in commit messages for repository
 * Installed plugins
 * A List of wiki macros
 * Rails information (default invisible)
@@ -27,6 +26,11 @@ Information Contents
 
 These information to display is selectable.
 If a administor user, all information is shown and _"Adminestration menu"_ is also shown in a side bar.
+
+The chart in the workflow is @SVG@ format. This is drawn by a browser.
+So Strings in a chart was shown correctly, even if the language was not English.
+Also, because the charts is simple, it is displayed faster than same raster image like a PNG.
+But It *"can't be shown in IE8"* which don't support SVG. (need IE9 or later. Or other browser.)
 
 
 h2. Download
@@ -37,18 +41,17 @@ http://sourceforge.jp/projects/rp-information/releases/
 
 h2. Install
 
-# Extends the dawnloaded package in vender/plugins directory.
+# Extends the dawnloaded package in @plugins@ directory.
 # Restart Redmine WEB server.
 
 cf. http://www.redmine.org/wiki/1/Plugins
 
 h3. Show Work flow charts
 
-# Install "Graphviz":http://www.graphviz.org/ , and set PATH.
+# Install "Graphviz":http://www.graphviz.org/
 # Check *"Use graphviz(dot)"* in this plugin setting page.
-
-But *"can't show charts in IE8"* which don't support SVG.
-And Redmine version needs 1.2.0 or later.
+# Set PATH of environment value for dot, 
+  or specify the full path of dot command.
 
 
 h2. Usage

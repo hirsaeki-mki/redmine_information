@@ -44,3 +44,23 @@ h3. 日本語
 
 不具合修正
 # 開発版 Redmine(revision 8162) で routes が変更されたことへの対応
+
+
+
+
+h2. 1.0.0
+
+Feature
+# Supports for Redmine 2.0
+# Adds German translation
+# Changes the entry page into the menu of the information category.
+# Improves the display of the premission report.
+
+---
+
+機能追加
+# Redmine 2.0 対応
+# ドイツ語のメッセージファイル追加
+# 最初に表示されるページを情報カテゴリのメニューに変更
+# 権限レポートの表示の改良
+
