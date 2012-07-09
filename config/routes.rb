@@ -1,2 +1,3 @@
 
-match '/info/:action', :to=>'info'
+match '/information/:id', :to=> 'info#show', :via=>'get'
+match '/information', :to=> 'info#index', :via=>'get'
