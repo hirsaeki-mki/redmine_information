@@ -64,3 +64,19 @@ Feature
 # 最初に表示されるページを情報カテゴリのメニューに変更
 # 権限レポートの表示の改良
 
+
+h2. 1.0.1
+
+Feature
+* Supports for Redmine 2.0.3 (Set routing)
+
+Bugfix
+* Internal Error of this plugin setting page
+
+---
+
+機能追加
+* Redmine 2.0.3 対応 (ルーティングの設定を追加)
+
+不具合修正
+* プラグインの設定ページの Internal Error
