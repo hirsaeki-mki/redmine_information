@@ -5,7 +5,7 @@
   <% name = "hide_#{catsym}" %>
   <tr><td>
   <%= check_box_tag("settings[#{name}]", 1, @settings[name]) %>
-  <%= InfoCategory.label(catsym) %>
+  <%=l InfoCategory.caption(catsym) %>
   </td></tr>
 <% } %>
 </table>
