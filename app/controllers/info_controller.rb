@@ -18,10 +18,10 @@ class InfoController < ApplicationController
 
   def workflows
     wfclass = nil
-    if defined? WorkflowTransition
-      wfclass = WorkflowTransition
-    else
+    if Redmine::VERSION::MAJOR == 2 and Redmine::VERSION::MINOR < 1
       wfclass = Workflow
+    else
+      wfclass = WorkflowTransition
     end
     @workflow_counts = wfclass.count_by_tracker_and_role
     @workflow_all_ng_roles = find_all_ng_roles(@workflow_counts)
