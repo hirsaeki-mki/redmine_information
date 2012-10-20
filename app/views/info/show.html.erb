@@ -3,7 +3,11 @@
 <%= stylesheet_link_tag 'redmine_info.css', :plugin => 'redmine_information' %>
 <% end %>
 
-<h2 <%= is_admin_only?(@icat) ? "class='icon icon-lock'" : "" %></h2>
+<% if (is_admin_only?(@icat)) %>
+<h2 class='icon icon-lock'>
+<% else %>
+<h2>
+<% end %>
 <%= l InfoCategory.caption(@icat)  %>
 </h2>
 
