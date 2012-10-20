@@ -18,10 +18,10 @@ class InfoController < ApplicationController
 
   def workflows
     wfclass = nil
-    if Rails::VERSION::MAJOR == 2 and Rails::VERSION::MINOR < 1
-      wfclass = Workflow
-    else
+    if defined? WorkflowTransition
       wfclass = WorkflowTransition
+    else
+      wfclass = Workflow
     end
     @workflow_counts = wfclass.count_by_tracker_and_role
     @workflow_all_ng_roles = find_all_ng_roles(@workflow_counts)
