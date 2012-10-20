@@ -17,7 +17,7 @@ class InfoController < ApplicationController
 
 
   def workflows
-    @workflow_counts = Workflow.count_by_tracker_and_role
+    @workflow_counts = WorkflowTransition.count_by_tracker_and_role
     @workflow_all_ng_roles = find_all_ng_roles(@workflow_counts)
 
     @roles = Role.find(:all, :order => 'builtin, position')
@@ -32,7 +32,7 @@ class InfoController < ApplicationController
     @statuses ||= IssueStatus.find(:all, :order => 'position')
 
     if (@tracker && @role && @statuses.any?)
-      workflows = Workflow.all(:conditions => {:role_id => @role.id, :tracker_id => @tracker.id})
+      workflows = WorkflowTransition.all(:conditions => {:role_id => @role.id, :tracker_id => @tracker.id})
       @workflows = {}
       @workflows['always'] = workflows.select {|w| !w.author && !w.assignee}
       @workflows['author'] = workflows.select {|w| w.author}
