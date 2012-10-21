@@ -80,3 +80,17 @@ Bugfix
 
 不具合修正
 * プラグインの設定ページの Internal Error
+
+
+h2. 1.0.2
+
+Bugfix
+* The page of workflows supports Redmine 2.1
+* fixes lock icon
+
+---
+
+不具合修正
+* ワークフローの Redmine 2.1 対応
+* ロックアイコンの Redmine 2.1 対応
+
