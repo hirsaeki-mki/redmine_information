@@ -60,13 +60,30 @@ class InfoController < ApplicationController
     @deliveries = ActionMailer::Base.perform_deliveries
 
     # Repository
-    @commit_fix_status = IssueStatus.find_by_id(Setting[:commit_fix_status_id])
-    unless (@commit_fix_status)
-      @commit_fix_status = l(:label_no_change_option)
-    end
-    @commit_fix_done_ratio = Setting[:commit_fix_done_ratio]
-    if (!@commit_fix_done_ratio or @commit_fix_done_ratio.empty?)
-      @commit_fix_done_ratio = l(:label_no_change_option)
+    if commit_update_keywords_supported?
+      @commit_update_keywords = Setting.commit_update_keywords_array
+      @commit_update_keywords.each do |rule|
+        if rule['keywords'].is_a?(Array)
+          rule['keywords_string'] = rule['keywords'].join(",")
+        end
+        if rule.has_key?('if_tracker_id')
+          tracker = Tracker.find_by_id(rule['if_tracker_id'])
+          rule['if_tracker_name'] = tracker.name if (tracker)
+        end
+        if rule.has_key?('status_id')
+          status = IssueStatus.find_by_id(rule['status_id'])
+          rule['status_name'] = status.name if (status)
+        end
+      end
+    else
+      @commit_fix_status = IssueStatus.find_by_id(Setting[:commit_fix_status_id])
+      unless (@commit_fix_status)
+        @commit_fix_status = l(:label_no_change_option)
+      end
+      @commit_fix_done_ratio = Setting[:commit_fix_done_ratio]
+      if (!@commit_fix_done_ratio or @commit_fix_done_ratio.empty?)
+        @commit_fix_done_ratio = l(:label_no_change_option)
+      end
     end
 
     @commit_logtime_enabled = Setting[:commit_logtime_enabled]

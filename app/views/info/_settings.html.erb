@@ -39,8 +39,8 @@
 <th><%=h l(:setting_commit_ref_keywords) %>:</th>
 <td><%=h Setting[:commit_ref_keywords] %></td>
 </tr>
+<% unless commit_update_keywords_supported? %>
 <tr>
-
 <th><%=h l(:setting_commit_fix_keywords) %>:</th>
 <td><%=h Setting[:commit_fix_keywords] %></td>
 </tr>
@@ -51,6 +51,7 @@
 <%=h l(:field_done_ratio) %>: <%=h @commit_fix_done_ratio %>
 </td>
 </tr>
+<% end %>
 
 <tr>
 <th> <%=h l(:setting_commit_logtime_enabled) %> : </th>
@@ -63,3 +64,27 @@
 </tr>
 <% end %>
 </table>
+
+<% if commit_update_keywords_supported? && !@commit_update_keywords.empty? %>
+  <div class='wiki'>
+    <table>
+        <tr>
+        <th> <%=h l(:label_tracker)%> </th>
+        <th> <%=h l(:setting_commit_fix_keywords)%> </th>
+        <th> <%=h l(:label_applied_status)%> </th>
+        <th> <%=h l(:field_done_ratio)%> </th>
+      </tr>
+    <% @commit_update_keywords.each do |rule| %>
+      <tr><td>
+      <%=h rule['if_tracker_name'] || l(:label_all)  %>
+      </td><td>
+      <%=h rule['keywords_string'] %>
+      </td><td>
+      <%=h rule['status_name'] %>
+      </td><td>
+      <%=h rule['done_ratio'] %> %
+      </td></tr>
+    <% end %>
+    </table>
+  </div>
+<% end %>

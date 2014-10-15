@@ -43,5 +43,10 @@ module InfoHelper
     (1 < Redmine::VERSION::MAJOR ||
         (1 == Redmine::VERSION::MAJOR && 2 <= Redmine::VERSION::MINOR))
   end
-  
+
+  # Redmine (version 2.4.0 or later) supports different commit keywords for each tracker and
+  # multiple issue update rules with different commit keywords.
+  def commit_update_keywords_supported?
+    2 <= Redmine::VERSION::MAJOR && 4 <= Redmine::VERSION::MINOR
+  end  
 end
