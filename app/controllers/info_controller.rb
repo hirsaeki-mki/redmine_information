@@ -86,6 +86,10 @@ class InfoController < ApplicationController
       end
     end
 
+    @commit_cross_project_ref = Setting[:commit_cross_project_ref]
+    if (@commit_cross_project_ref)
+      @commit_cross_project_ref = (0 < @commit_cross_project_ref.to_i)
+    end
     @commit_logtime_enabled = Setting[:commit_logtime_enabled]
     if (@commit_logtime_enabled)
       @commit_logtime_enabled = (0 < @commit_logtime_enabled.to_i)

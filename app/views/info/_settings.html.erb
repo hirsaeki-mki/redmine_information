@@ -54,6 +54,10 @@
 <% end %>
 
 <tr>
+<th> <%=h l(:setting_commit_cross_project_ref) %> : </th>
+<td> <%= show_bool(@commit_cross_project_ref, "--") %> </td>
+</tr>
+<tr>
 <th> <%=h l(:setting_commit_logtime_enabled) %> : </th>
 <td> <%= show_bool(@commit_logtime_enabled, "--") %> </td>
 </tr>
