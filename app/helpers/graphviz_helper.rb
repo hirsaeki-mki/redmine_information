@@ -38,7 +38,7 @@ module GraphvizHelper
     statuses.each {|sts|
       next 	unless uses.include?(sts.position)
       opt.clear
-      if (sts.is_default?)
+      if (sts.id == @tracker.default_status_id)
         opt['style'] = 'filled'
         opt['fillcolor'] = quote 'yellow'
       elsif (sts.is_closed?)
